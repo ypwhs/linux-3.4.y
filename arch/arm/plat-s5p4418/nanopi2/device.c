@@ -1565,9 +1565,23 @@ void __init nxp_board_devices_register(void)
 	platform_device_register(&nxp_v4l2_dev);
 #endif
 
+static struct spi_board_info spi_vs1053[] __initdata = {
+	[0] = {
+		.modalias        = "spi_vs1053",    /* fixup */
+		.max_speed_hz    = 3125000,     /* max spi clock (SCK) speed in HZ */
+		.bus_num         = 0,           /* Note> set bus num, must be smaller than ARRAY_SIZE(spi_plat_device) */
+		.chip_select     = 0,           /* Note> set chip select num, must be smaller than spi cs_num */
+		.controller_data = &spi0_info,
+		.mode            = SPI_MODE_3 | SPI_CPOL | SPI_CPHA,
+	},
+};
+
+spi_register_board_info(spi_vs1053, ARRAY_SIZE(spi_vs1053));
+printk("\nplat: register spidev\n");
+
 #if defined(CONFIG_SPI_SPIDEV) || defined(CONFIG_SPI_SPIDEV_MODULE)
-	spi_register_board_info(spi_plat_board, ARRAY_SIZE(spi_plat_board));
-	printk("plat: register spidev\n");
+	// spi_register_board_info(spi_plat_board, ARRAY_SIZE(spi_plat_board));
+	// printk("plat: register spidev\n");
 #endif
 
 #if defined(CONFIG_TOUCHSCREEN_GSLX680)
