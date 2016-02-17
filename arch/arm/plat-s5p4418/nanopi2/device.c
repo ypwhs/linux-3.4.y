@@ -1577,7 +1577,7 @@ static struct spi_board_info spi_vs1053[] __initdata = {
 };
 
 spi_register_board_info(spi_vs1053, ARRAY_SIZE(spi_vs1053));
-printk("\nplat: register spidev\n");
+printk("\nplat: register spi_vs1053\n");
 
 #if defined(CONFIG_SPI_SPIDEV) || defined(CONFIG_SPI_SPIDEV_MODULE)
 	// spi_register_board_info(spi_plat_board, ARRAY_SIZE(spi_plat_board));
