@@ -1568,7 +1568,7 @@ void __init nxp_board_devices_register(void)
 static struct spi_board_info spi_vs1053[] __initdata = {
 	[0] = {
 		.modalias        = "spi_vs1053",    /* fixup */
-		.max_speed_hz    = 3125000,     /* max spi clock (SCK) speed in HZ */
+		.max_speed_hz    = 24000000,     /* max spi clock (SCK) speed in HZ */
 		.bus_num         = 0,           /* Note> set bus num, must be smaller than ARRAY_SIZE(spi_plat_device) */
 		.chip_select     = 0,           /* Note> set chip select num, must be smaller than spi cs_num */
 		.controller_data = &spi0_info,
